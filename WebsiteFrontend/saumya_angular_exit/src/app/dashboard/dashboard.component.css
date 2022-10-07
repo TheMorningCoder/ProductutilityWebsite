@@ -1,0 +1,12 @@
+.bg_image{
+    background-image: url('../../assets/images/bg_image.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: right top;
+}
+
+.text_right{
+    text-align: right;
+    padding-right: 10px;
+}

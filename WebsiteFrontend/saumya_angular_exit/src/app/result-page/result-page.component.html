@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="row mt-1">
+        <div class="card col-md-6 offset-md-3 shadow-lg">
+            <h4 class="text-dark text-center">Search the community questions</h4>
+            <div class="card-body">
+                <input class="form-control rounded-pill" type="search" [(ngModel)]="filterString" placeholder="Search"
+                    aria-label="Search">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6" *ngFor="let product of products | filters:filterString">
+            <div class="card my-1 text-dark bg-light" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{product.category[0].toUpperCase()}}{{product.category.substring(1)}}</h5>
+                    <p class="card-text"><b>Product: {{product.name}}</b></p>
+                    <p class="card-subtitle mb-2">By: {{product.email}} <br><b>Date: {{product.createdOn | date:'medium'}}</b>
+                    </p>
+                    <button (click)="viewDetails(product.code)" class="">View
+                        Details</button>&nbsp;&nbsp;&nbsp; <br>
+                    <!-- <a href="#" class=""><i class="bi bi-chat-dots-fill"></i> Comments</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" class=""><i class="bi bi-balloon-heart-fill"></i> Like</a> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="card my-1 text-dark bg-light" *ngFor="let question of community | filters:filterString">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="assets/images/nagarro.png" class="img-fluid rounded-start" alt="..." />
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <div class="mt-1 ">
+                        <h5>{{question.subject}}...</h5>
+                    </div>
+                    <p>By: {{question.email}}, <b>Date: {{question.date}}</b></p>
+                    <p class="card-text"> <b>Product: {{question.product}}</b><br> {{question.message}}</p>
+                    <button (click)="viewDetails(question.id)" class="">View
+                        Details</button>&nbsp;&nbsp;&nbsp;
+                    <a href="#" class=""><i class="bi bi-chat-dots-fill"></i> Comments</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" class=""><i class="bi bi-balloon-heart-fill"></i> Like</a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+</div>
+<app-footer></app-footer>

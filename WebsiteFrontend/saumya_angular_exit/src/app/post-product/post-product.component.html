@@ -1,0 +1,131 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="card-body shadow-md">
+        <div class="px-1 mt-1">
+            <div class="row">
+                <div class="col">
+                    <b>Post a new product for reviews </b>
+                </div>
+                <div class="col">
+                   <b> <marquee behavior="" direction="">{{currentDate | date:'medium' }}</marquee> </b>
+                </div>
+            </div>
+
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-8">
+
+                <form [formGroup]="postProducts" (ngSubmit)="onSubmit()">
+                    <div class="row mb-3">
+                        <div class="col ">
+                            <label for="" class="form-label text-muted">Product Code *</label>
+                            <input type="text" class="form-control" formControlName="code" required />
+                            <span class="text-danger" *ngIf="postProducts.controls['code'].dirty && postProducts.hasError('required', 'code')">*code is required</span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col ">
+                            <label for="" class="form-label text-muted">Select Product Category *</label>
+                            <select class="form-select" formControlName="category"  aria-label="Default select example" required>
+                                <option value="Cameras & Photography" selected>Cameras & Photography</option>
+                                <option value="Computers and Accesories">Computers and Accesories</option>
+                                <option value="Headphones">Headphones</option>
+                                <option value="Home Theater, TV & Video">Home Theater, TV & Video</option>
+                                <option value="Fitness Trackers and Smart Watches">Fitness Trackers and Smart Watches</option>
+                                <option value="Laptop & Accesories">Laptop & Accesories</option>
+                                <option value="Mobiles & Accesories">Mobiles & Accesories</option>
+                                <option value="Portable Media Players">Portable Media Players</option>
+                                <option value="Tablets">Tablets</option>
+                            </select>
+                            <span class="text-danger" *ngIf="postProducts.controls['category'].dirty && postProducts.hasError('required', 'category')">*category is required</span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col ">
+                            <label for="" class="form-label text-muted">Product Name *</label>
+                            <input type="text" class="form-control" formControlName="name" required />
+                            <span class="text-danger" *ngIf="postProducts.controls['name'].dirty && postProducts.hasError('required', 'name')">*name is required</span>
+
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col ">
+                            <label for="" class="form-label text-muted">Select Product Brand *</label>
+                            <select class="form-select" formControlName="brand"  aria-label="Default select example" required>    
+                                <option value="Apple">Apple"</option>
+                                <option value="ASUS">ASUS</option>
+                                <option value="Dell">Dell</option>
+                                <option value="Google">Google</option>
+                                <option value="Lenovo">Lenovo</option>
+                                <option value="Micromax">Micromax</option>
+                                <option value="Microsoft">Microsoft</option>
+                                <option value="Moto">Moto</option>
+                                <option value="Nokia">Nokia</option>
+                                <option value="OnePlus">OnePlus</option>
+                                <option value="Redmi" selected>Redmi</option>
+                                <option value="Samsung">Samsung</option>
+                                <option value="Sony">Sony</option>
+                                <option value="Toshiba">Toshiba</option>
+                                <option value="Vivo">Vivo</option>
+                                <option value="Xiaomi">Xiaomi</option>
+                            </select>
+                            <span class="text-danger" *ngIf="postProducts.controls['brand'].dirty && postProducts.hasError('required', 'brand')">*brand is required</span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col ">
+                            <label for="" class="form-label text-muted">Select Product Color *</label>
+                            <select class="form-select" formControlName="color"  aria-label="Default select example" required>    
+                                <option value="Black">Black</option>
+                                <option value="Silver">Silver</option>
+                                <option value="Grey">Grey</option>
+                                <option value="White">White</option>
+                                <option value="Maroon">Maroon</option>
+                                <option value="Red">Red</option>
+                                <option value="Purple">Purple</option>
+                                <option value="Fuchsia">Fuchsia</option>
+                                <option value="Green">Green</option>
+                                <option value="Lime">Lime</option>
+                                <option value="Olive" selected>Olive</option>
+                                <option value="Yellow">Yellow</option>
+                                <option value="Navy">Navy</option>
+                                <option value="Blue">Blue</option>
+                                <option value="Teal">Teal</option>
+                                <option value="Aqua">Aqua</option>
+                            </select>
+                            <span class="text-danger" *ngIf="postProducts.controls['color'].dirty && postProducts.hasError('required', 'color')">*color is required</span>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col ">
+                            <label for="" class="form-label text-muted">Product Price *</label>
+                            <input type="text" class="form-control" formControlName="price" required />
+                            <span class="text-danger" *ngIf="postProducts.controls['price'].dirty && postProducts.hasError('required', 'price')">*price is required</span>
+
+                        </div>
+                    </div>
+                    <input hidden readonly type="email" class="form-control" value="{{userEmail}}" formControlName="email"  />
+                    <div class="row mt-3 justify-content-end">
+                        <div class="col-md-2">
+                            <button type="reset"  id="cancel" class="btn btn-white border rounded-pill">Cancel</button>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="submit" [disabled]="!postProducts.valid" class="btn btn-dark border rounded-pill">Post</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
+
+
+
+<!-- <input type="date" id="date" name="date" />
+<script type="text/javascript">
+document.getElementById("date").value = new Date();
+</script> -->

@@ -1,0 +1,62 @@
+<a routerLink="">Back</a>
+<div class="container">
+    <div class="card shadow-md">
+        <div class="px-1 mt-1">
+            <b>Registration</b>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card-body my-4">
+                    <p class="text-center">Register with your email and password:</p>
+                    <form [formGroup]="userData" (ngSubmit)="onSubmit()">
+                        <div class="row mb-3">
+                            <div class="col text-center">
+                                <input placeholder="Email*" type="email"
+                                    class="form-input m-0 w-100 rounded border-1 for" formControlName="email"
+                                    required />
+                                    <span class="text-danger" *ngIf="userData.controls['email'].dirty && userData.hasError('required', 'email')">*email is required</span>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-6 col-md-6 text-start">
+                                <input placeholder="First Name" type="text"
+                                    class="form-input m-0 w-100 rounded border-1" formControlName="fname" required />
+                                    <span class="text-danger" *ngIf="userData.controls['fname'].dirty && userData.hasError('required', 'fname')">*fname is required</span>
+                                </div>
+                            <div class="col-6 col-md-6 text-center">
+                                <input placeholder="Last Name" type="text" class="form-input m-0 w-100 rounded border-1"
+                                    formControlName="lname" required />
+                                    <span class="text-danger" *ngIf="userData.controls['lname'].dirty && userData.hasError('required', 'lname')">*lname is required</span>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col col text-start">
+                                <input placeholder="Password*" type="password"
+                                    class="form-input m-0 w-100 rounded border-1" formControlName="password"
+                                    required />
+                                    <span class="text-danger" *ngIf="userData.controls['password'].dirty && userData.hasError('required', 'password')">*password is required</span>
+                            </div>
+                            <!-- <div class="col-6 col-md-6 text-center">
+                                <input placeholder="Confirm Password*" type="password"
+                                    class="form-input m-0 w-100 rounded border-1" formControlName="password2"
+                                    required />
+                            </div> -->
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-3 ">
+                                <button type="reset" id="cancel" class="btn btn-danger border rounded-pill">Clear</button>
+                            </div>
+                            <div class="col-3 ">
+                                <button type="submit" [disabled]="!userData.valid" class="btn btn-dark border rounded-pill">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <span>Already have an account? <a routerLink="/login" class="">Login here</a></span> 
+            </div>
+        </div>
+    </div>
+</div>

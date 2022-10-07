@@ -1,0 +1,44 @@
+<a routerLink="">Back</a>
+<div class="container"><br>
+        <div class="row">
+            <div class="card shadow-md">
+                <div class="px-1 mt-1">
+                    <b>Login</b>
+                </div><hr>
+            <div class="col-md-6 offset-md-3">
+                <div class="card-body my-3">
+                    <p class="text-center">Login with your email and password: <br> <span class="text-danger">{{msg}}</span></p>
+                    
+                    <form [formGroup]="loginData" (ngSubmit)="loginUser()">
+                        <div class="row mb-3">
+                            <div class="col text-center">
+                                <input placeholder="Email*" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                                    class="form-input m-0 w-100 rounded border-1 for" formControlName="email"
+                                    required />
+                                    <span class="text-danger" *ngIf="loginData.controls['email'].dirty && loginData.hasError('required', 'email')">*email is required</span>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col text-center">
+                                <input placeholder="Password*" type="password"
+                                    class="form-input m-0 w-100 rounded border-1" formControlName="password"
+                                    required />
+                                    <span class="text-danger" *ngIf="loginData.controls['password'].dirty && loginData.hasError('required', 'password')">*password is required</span>
+                            </div>
+                            
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-4 offset-md-4 ">
+                                <button type="submit" [disabled]="!loginData.valid" class="btn btn-dark border rounded-pill">Login</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <span>Not have an account? <a routerLink="/registration" class="">Register here</a></span> 
+            </div>
+        </div>
+    </div>
+</div>

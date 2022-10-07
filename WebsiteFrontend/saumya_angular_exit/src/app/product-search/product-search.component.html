@@ -1,0 +1,74 @@
+<app-navbar></app-navbar>
+<div class="container">
+    <div class="container text-white px-4 mt-1 ">
+        <div class="row ">
+            <div class="col-md-6 offset-md-3">
+                <div class="card shadow-lg">
+                    <h4 class="text-dark text-center mt-1">Search Help Articles</h4>
+                    <div class="card-body">
+                        <form [formGroup]="findProducts" (ngSubmit)="searchResult()" class="d-flex border border-dark rounded-pill">
+                            <input class="form-control rounded-pill" formControlName="query" type="search"
+                                placeholder="Search Here" aria-label="Search">
+                            <button [disabled]="!findProducts.valid" class="btn btn-light rounded-pill"
+                                 type="submit"><i class="bi bi-search"></i></button>
+                            <span class="text-danger"
+                                *ngIf="findProducts.controls['query'].dirty && findProducts.hasError('required', 'query')">*Query
+                                is required</span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="results">
+
+        <div *ngIf="filterProducts.length>0; else other_content">
+            <div *ngFor="let filterSearch of filterProducts">
+                <div class="row">
+                    <div class="col-md-6" *ngFor="let product of filterProducts">
+                        <div class="card my-1 text-dark bg-light" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">{{product.category}...</h5>
+                                <p class="card-text"><b>Product: {{product.name}</b></p>
+                                <p class="card-subtitle mb-2 text-muted">By: {{product.brand}} <br><b>Date:
+                                        {{product.price}}</b></p>
+                                <button (click)="viewDetails(product.code)" class="">View
+                                    Details</button>&nbsp;&nbsp;&nbsp; <br>
+                                <a href="#" class=""><i class="bi bi-chat-dots-fill"></i> Comments</a>&nbsp;&nbsp;&nbsp;
+                                <a href="#" class=""><i class="bi bi-balloon-heart-fill"></i> Like</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ng-template #other_content>
+            <span class="text-danger"><b>No results found</b></span>
+        </ng-template>
+
+    </div>
+
+    <!-- <div class="card my-1 text-dark bg-light" *ngFor="let quesProductsfilterProducts">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="assets/images/nagarro.png" class="img-fluid rounded-start" alt="..." />
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <div class="mt-1 ">
+                        <h5>{{question.subject}}...</h5>
+                    </div>
+                    <p>By: {{question.email}}, <b>Date: {{question.date}}</b></p>
+                    <p class="card-text"> <b>Product: {{question.product}}</b><br> {{question.message}}</p>
+                    <button (click)="viewDetails(question.id)" class="">View
+                        Details</button>&nbsp;&nbsp;&nbsp;
+                    <a href="#" class=""><i class="bi bi-chat-dots-fill"></i> Comments</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" class=""><i class="bi bi-balloon-heart-fill"></i> Like</a>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+</div>
